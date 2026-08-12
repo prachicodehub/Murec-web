@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #121110;
+  --color-ink-soft: #181614;
+  --color-ink-elevated: #1e1c19;
+  --color-cream: #f2efe9;
+  --color-cream-muted: #9e9890;
+  --color-cream-soft: #cfc8be;
+  --color-bronze: #c9a66b;
+  --color-line: rgba(242, 239, 233, 0.1);
+  --color-line-strong: rgba(242, 239, 233, 0.22);
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-350: 350ms;
+
+  --z-index-100: 100;
+  --z-index-110: 110;
+
+  --animate-hero-zoom: hero-zoom 18s var(--ease-out-expo) forwards;
+  --animate-scroll-pulse: scroll-pulse 2.2s ease-in-out infinite;
+
+  @keyframes hero-zoom {
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scroll-pulse {
+    0%,
+    100% {
+      transform: scaleY(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scaleY(0.7);
+      opacity: 0.35;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen overflow-x-hidden bg-ink font-sans text-base leading-relaxed text-cream antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% -10%, rgba(201, 166, 107, 0.08), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 90% 20%, rgba(242, 239, 233, 0.03), transparent 50%);
+    text-rendering: optimizeLegibility;
+  }
+
+  body.menu-open {
+    @apply overflow-hidden;
+  }
+
+  img {
+    @apply block max-w-full;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    @apply cursor-pointer border-0 bg-transparent;
+  }
+
+  ul,
+  ol {
+    @apply list-none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-medium leading-tight tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-bronze text-ink;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-[min(1180px,calc(100%-1.5rem))] md:w-[min(1180px,calc(100%-2.5rem))];
+  }
+
+  .container-wide {
+    @apply mx-auto w-[min(1400px,calc(100%-1.25rem))] md:w-[min(1400px,calc(100%-2rem))];
+  }
+
+  .section-pad {
+    @apply py-18 md:py-26;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-bronze;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-7 bg-bronze;
+  }
+
+  .display {
+    @apply font-display font-medium tracking-[-0.025em];
+  }
+}
