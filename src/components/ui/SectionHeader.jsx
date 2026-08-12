@@ -5,15 +5,17 @@ const SectionHeader = ({ eyebrow, title, intro, align = "left" }) => {
 
   return (
     <Reveal
-      className={`mb-16 max-w-xl ${centered ? "mx-auto text-center" : ""}`}
+      className={`mb-10 max-w-xl sm:mb-12 md:mb-16 ${centered ? "mx-auto text-center" : ""}`}
     >
       {eyebrow ? (
         <p className={`eyebrow ${centered ? "justify-center" : ""}`}>{eyebrow}</p>
       ) : null}
-      <h2 className="display mt-4 text-[clamp(2.2rem,4.5vw,3.75rem)]">{title}</h2>
+      <h2 className="display mt-3 text-[clamp(1.9rem,4.8vw,3.75rem)] sm:mt-4">
+        {title}
+      </h2>
       {intro ? (
         <p
-          className={`mt-5 max-w-xl text-[1.05rem] text-cream-muted ${
+          className={`mt-4 max-w-xl text-[0.98rem] text-cream-muted sm:mt-5 sm:text-[1.05rem] ${
             centered ? "mx-auto" : ""
           }`}
         >

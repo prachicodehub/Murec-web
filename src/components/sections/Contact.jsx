@@ -11,13 +11,13 @@ const initialForm = {
 };
 
 const fieldClass =
-  "w-full border border-line bg-ink/55 px-4 py-3.5 outline-none transition-colors duration-300 ease-out-expo focus:border-bronze";
+  "w-full rounded-xl border border-white/10 bg-ink/40 px-4 py-3 outline-none backdrop-blur-md transition-colors duration-300 ease-out-expo focus:border-bronze sm:py-3.5";
 
 const labelClass = "grid gap-1.5";
 const labelTextClass =
-  "text-[0.7rem] uppercase tracking-[0.14em] text-cream-muted";
+  "text-[0.68rem] uppercase tracking-[0.14em] text-cream-muted sm:text-[0.7rem]";
 const detailLabelClass =
-  "mb-1.5 text-[0.7rem] uppercase tracking-[0.16em] text-bronze";
+  "mb-1.5 text-[0.68rem] uppercase tracking-[0.16em] text-bronze sm:text-[0.7rem]";
 
 const Contact = () => {
   const [form, setForm] = useState(initialForm);
@@ -36,50 +36,57 @@ const Contact = () => {
 
   return (
     <section
-      className="section-pad bg-[radial-gradient(ellipse_70%_50%_at_80%_20%,rgba(201,166,107,0.07),transparent_55%),var(--color-ink)]"
+      className="section-pad relative overflow-hidden bg-[radial-gradient(ellipse_70%_50%_at_80%_20%,rgba(201,166,107,0.07),transparent_55%),var(--color-ink)]"
       id={contact.id}
     >
-      <div className="container-page grid items-start gap-8 md:grid-cols-2 md:gap-12 lg:gap-18">
+      <div
+        className="ambient-orb -left-16 bottom-10 size-72 bg-bronze/10"
+        aria-hidden="true"
+      />
+
+      <div className="container-page grid items-start gap-6 md:grid-cols-2 md:gap-10 lg:gap-16">
         <Reveal>
           <p className="eyebrow">{contact.eyebrow}</p>
-          <h2 className="display mt-4 text-[clamp(2.3rem,4.5vw,3.8rem)]">
+          <h2 className="display mt-4 text-[clamp(2rem,4.5vw,3.8rem)]">
             {contact.title}
           </h2>
-          <p className="mt-5 max-w-md text-[1.05rem] text-cream-muted">
+          <p className="mt-4 max-w-md text-[0.98rem] text-cream-muted sm:mt-5 sm:text-[1.05rem]">
             {contact.body}
           </p>
 
-          <div className="mt-8 grid gap-5">
-            <div>
+          <div className="mt-7 grid gap-3 sm:mt-8 sm:gap-4">
+            <div className="glass-soft rounded-xl p-4 sm:p-5">
               <p className={detailLabelClass}>{contact.office.label}</p>
-              <p>{contact.office.value}</p>
+              <p className="text-[0.95rem] sm:text-base">{contact.office.value}</p>
             </div>
-            <div>
-              <p className={detailLabelClass}>Phone</p>
-              <a
-                className="text-cream-soft transition-colors duration-300 ease-out-expo hover:text-cream"
-                href={`tel:${contact.phone.replace(/\s/g, "")}`}
-              >
-                {contact.phone}
-              </a>
-            </div>
-            <div>
-              <p className={detailLabelClass}>Email</p>
-              <a
-                className="text-cream-soft transition-colors duration-300 ease-out-expo hover:text-cream"
-                href={`mailto:${contact.email}`}
-              >
-                {contact.email}
-              </a>
+            <div className="grid grid-cols-1 gap-3 xs:grid-cols-2">
+              <div className="glass-soft rounded-xl p-4 sm:p-5">
+                <p className={detailLabelClass}>Phone</p>
+                <a
+                  className="break-all text-cream-soft transition-colors duration-300 ease-out-expo hover:text-cream"
+                  href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                >
+                  {contact.phone}
+                </a>
+              </div>
+              <div className="glass-soft rounded-xl p-4 sm:p-5">
+                <p className={detailLabelClass}>Email</p>
+                <a
+                  className="break-all text-cream-soft transition-colors duration-300 ease-out-expo hover:text-cream"
+                  href={`mailto:${contact.email}`}
+                >
+                  {contact.email}
+                </a>
+              </div>
             </div>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 border-t border-line pt-6 md:grid-cols-3">
+          <div className="mt-4 grid grid-cols-1 gap-3 border-t border-line pt-5 xs:grid-cols-3 sm:mt-6">
             {contact.channels.map((channel) => (
-              <div key={channel.label}>
+              <div key={channel.label} className="glass-soft rounded-xl p-4">
                 <p className={detailLabelClass}>{channel.label}</p>
                 <a
-                  className="text-cream-soft transition-colors duration-300 ease-out-expo hover:text-cream"
+                  className="break-all text-[0.9rem] text-cream-soft transition-colors duration-300 ease-out-expo hover:text-cream"
                   href={`mailto:${channel.value}`}
                 >
                   {channel.value}
@@ -89,14 +96,11 @@ const Contact = () => {
           </div>
         </Reveal>
 
-        <Reveal
-          className="border border-line bg-ink-elevated p-6 md:p-9"
-          delay={0.1}
-        >
+        <Reveal className="glass-panel rounded-2xl p-5 sm:p-7 md:p-8" delay={0.1}>
           {submitted ? (
-            <div className="grid min-h-[22rem] content-center gap-4" role="status">
+            <div className="grid min-h-[18rem] content-center gap-4 sm:min-h-[22rem]" role="status">
               <p className="eyebrow">Thank you</p>
-              <h3 className="display max-w-[12ch] text-[clamp(1.8rem,3vw,2.4rem)]">
+              <h3 className="display max-w-[12ch] text-[clamp(1.6rem,3vw,2.4rem)]">
                 Your message has been received
               </h3>
               <p className="text-cream-muted">We will get back to you shortly.</p>
@@ -144,7 +148,7 @@ const Contact = () => {
               <label className={labelClass}>
                 <span className={labelTextClass}>Message</span>
                 <textarea
-                  className={`${fieldClass} resize-y`}
+                  className={`${fieldClass} min-h-28 resize-y`}
                   name="message"
                   rows="5"
                   required
@@ -152,7 +156,7 @@ const Contact = () => {
                   onChange={onChange}
                 />
               </label>
-              <Button type="submit" variant="accent">
+              <Button type="submit" variant="accent" className="mt-1 w-full sm:w-auto">
                 Submit Enquiry
               </Button>
             </form>

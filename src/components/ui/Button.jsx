@@ -2,7 +2,7 @@ const variants = {
   primary:
     "border-transparent bg-cream text-ink hover:bg-bronze hover:text-ink",
   ghost:
-    "border-line-strong bg-transparent text-cream hover:border-bronze hover:text-bronze",
+    "glass-soft text-cream hover:border-bronze/50 hover:bg-bronze/10 hover:text-bronze",
   accent: "border-transparent bg-bronze text-ink hover:bg-cream",
 };
 
@@ -15,7 +15,7 @@ const Button = ({
   onClick,
 }) => {
   const classes = [
-    "inline-flex min-h-12 items-center justify-center border px-6 py-3.5 text-[0.78rem] font-medium uppercase tracking-[0.16em] transition-[background-color,color,border-color,transform] duration-350 ease-out-expo max-sm:w-full cursor-pointer",
+    "inline-flex min-h-11 items-center justify-center border px-5 py-3 text-[0.72rem] font-medium uppercase tracking-[0.16em] transition-[background-color,color,border-color,transform,backdrop-filter] duration-350 ease-out-expo cursor-pointer sm:min-h-12 sm:px-6 sm:py-3.5 sm:text-[0.78rem] max-xs:w-full",
     variants[variant] ?? variants.primary,
     className,
   ]
